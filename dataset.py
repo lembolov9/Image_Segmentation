@@ -29,9 +29,9 @@ def main(config):
     for filename in filenames:
         ext = os.path.splitext(filename)[-1]
         if ext =='.jpg':
-            filename = filename.split('_')[-1][:-len('.jpg')]
-            data_list.append('ISIC_'+filename+'.jpg')
-            GT_list.append('ISIC_'+filename+'_segmentation.png')
+            filename = filename[:-len('.jpg')]
+            data_list.append(filename+'.jpg')
+            GT_list.append(filename+'.jpg')
 
     num_total = len(data_list)
     num_train = int((config.train_ratio/(config.train_ratio+config.valid_ratio+config.test_ratio))*num_total)
@@ -96,8 +96,8 @@ if __name__ == '__main__':
     parser.add_argument('--test_ratio', type=float, default=0.2)
 
     # data path
-    parser.add_argument('--origin_data_path', type=str, default='../ISIC/dataset/ISIC2018_Task1-2_Training_Input')
-    parser.add_argument('--origin_GT_path', type=str, default='../ISIC/dataset/ISIC2018_Task1_Training_GroundTruth')
+    parser.add_argument('--origin_data_path', type=str, default='TRAIN_SET/Jane/AX-T2-FLAIR-24-09-18/scans')
+    parser.add_argument('--origin_GT_path', type=str, default='TRAIN_SET/Jane/AX-T2-FLAIR-24-09-18/rois')
     
     parser.add_argument('--train_path', type=str, default='./dataset/train/')
     parser.add_argument('--train_GT_path', type=str, default='./dataset/train_GT/')

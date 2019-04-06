@@ -34,21 +34,21 @@ def main(config):
 
     print(config)
         
-    train_loader = get_loader(image_path=config.train_path,
-                            image_size=config.image_size,
-                            batch_size=config.batch_size,
+    train_loader = get_loader(image_path='./dataset/train/',
+                            image_size=1826,
+                            batch_size=1,
                             num_workers=config.num_workers,
                             mode='train',
                             augmentation_prob=config.augmentation_prob)
-    valid_loader = get_loader(image_path=config.valid_path,
-                            image_size=config.image_size,
-                            batch_size=config.batch_size,
+    valid_loader = get_loader(image_path='./dataset/valid/',
+                            image_size=1826,
+                            batch_size=1,
                             num_workers=config.num_workers,
                             mode='valid',
                             augmentation_prob=0.)
-    test_loader = get_loader(image_path=config.test_path,
-                            image_size=config.image_size,
-                            batch_size=config.batch_size,
+    test_loader = get_loader(image_path='./dataset/test/',
+                            image_size=1826,
+                            batch_size=1,
                             num_workers=config.num_workers,
                             mode='test',
                             augmentation_prob=0.)
