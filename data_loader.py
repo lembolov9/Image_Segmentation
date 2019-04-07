@@ -56,8 +56,6 @@ class ImageFolder(data.Dataset):
 
             image = Transform(image)
             GT = Transform(GT)
-            print(image.size)
-            print(GT.size)
 
             ShiftRange_left = random.randint(0,20)
             ShiftRange_upper = random.randint(0,20)
@@ -90,6 +88,8 @@ class ImageFolder(data.Dataset):
 
         Norm_ = T.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
         image = Norm_(image)
+
+
 
         return image, GT
 

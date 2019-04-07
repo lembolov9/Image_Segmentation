@@ -96,8 +96,8 @@ if __name__ == '__main__':
     parser.add_argument('--test_ratio', type=float, default=0.2)
 
     # data path
-    parser.add_argument('--origin_data_path', type=str, default='TRAIN_SET/Jane/AX-T2-FLAIR-24-09-18/scans')
-    parser.add_argument('--origin_GT_path', type=str, default='TRAIN_SET/Jane/AX-T2-FLAIR-24-09-18/rois')
+    parser.add_argument('--origin_data_path', type=str, default='/home/sergey/PycharmProjects/image_preprocessing/result/train')
+    parser.add_argument('--origin_GT_path', type=str, default='/home/sergey/PycharmProjects/image_preprocessing/result/target')
     
     parser.add_argument('--train_path', type=str, default='./dataset/train/')
     parser.add_argument('--train_GT_path', type=str, default='./dataset/train_GT/')

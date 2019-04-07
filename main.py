@@ -52,10 +52,8 @@ def main(config):
                             num_workers=config.num_workers,
                             mode='test',
                             augmentation_prob=0.)
-
+    print(config)
     solver = Solver(config, train_loader, valid_loader, test_loader)
-
-    
     # Train and sample the images
     if config.mode == 'train':
         solver.train()
@@ -68,12 +66,12 @@ if __name__ == '__main__':
 
     
     # model hyper-parameters
-    parser.add_argument('--image_size', type=int, default=224)
+    parser.add_argument('--image_size', type=int, default=1826)
     parser.add_argument('--t', type=int, default=3, help='t for Recurrent step of R2U_Net or R2AttU_Net')
     
     # training hyper-parameters
     parser.add_argument('--img_ch', type=int, default=3)
-    parser.add_argument('--output_ch', type=int, default=1)
+    parser.add_argument('--output_ch', type=int, default=3)
     parser.add_argument('--num_epochs', type=int, default=100)
     parser.add_argument('--num_epochs_decay', type=int, default=70)
     parser.add_argument('--batch_size', type=int, default=1)
