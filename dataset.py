@@ -91,9 +91,9 @@ if __name__ == '__main__':
 
     
     # model hyper-parameters
-    parser.add_argument('--train_ratio', type=float, default=0.6)
+    parser.add_argument('--train_ratio', type=float, default=0.7)
     parser.add_argument('--valid_ratio', type=float, default=0.2)
-    parser.add_argument('--test_ratio', type=float, default=0.2)
+    parser.add_argument('--test_ratio', type=float, default=0.1)
 
     # data path
     parser.add_argument('--origin_data_path', type=str, default='/home/sergey/PycharmProjects/image_preprocessing/result/train')

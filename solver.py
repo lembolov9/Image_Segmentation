@@ -173,6 +173,7 @@ class Solver(object):
 				F1 = F1/length
 				JS = JS/length
 				DC = DC/length
+				epoch_loss = epoch_loss/length
 
 				# Print the log info
 				print('Epoch [%d/%d], Loss: %.4f, \n[Training] Acc: %.4f, SE: %.4f, SP: %.4f, PC: %.4f, F1: %.4f, JS: %.4f, DC: %.4f' % (
