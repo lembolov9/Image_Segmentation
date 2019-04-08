@@ -36,50 +36,50 @@ class ImageFolder(data.Dataset):
 
         Transform = []
 
-        # ResizeRange = random.randint(300,320)
-        # Transform.append(T.Resize((int(ResizeRange*aspect_ratio),ResizeRange)))
-        # p_transform = random.random()
-        #
-        # if (self.mode == 'train') and p_transform <= self.augmentation_prob:
-        #     RotationDegree = random.randint(0,3)
-        #     RotationDegree = self.RotationDegree[RotationDegree]
-        #     if (RotationDegree == 90) or (RotationDegree == 270):
-        #         aspect_ratio = 1/aspect_ratio
-        #
-        #     Transform.append(T.RandomRotation((RotationDegree,RotationDegree)))
-        #
-        #     RotationRange = random.randint(-10,10)
-        #     Transform.append(T.RandomRotation((RotationRange,RotationRange)))
-        #     CropRange = random.randint(250,270)
-        #     Transform.append(T.CenterCrop((int(CropRange*aspect_ratio),CropRange)))
-        #     Transform = T.Compose(Transform)
-        #
-        #     image = Transform(image)
-        #     GT = Transform(GT)
-        #
-        #     ShiftRange_left = random.randint(0,20)
-        #     ShiftRange_upper = random.randint(0,20)
-        #     ShiftRange_right = image.size[0] - random.randint(0,20)
-        #     ShiftRange_lower = image.size[1] - random.randint(0,20)
-        #     image = image.crop(box=(ShiftRange_left,ShiftRange_upper,ShiftRange_right,ShiftRange_lower))
-        #     GT = GT.crop(box=(ShiftRange_left,ShiftRange_upper,ShiftRange_right,ShiftRange_lower))
-        #
-        #     if random.random() < 0.5:
-        #         image = F.hflip(image)
-        #         GT = F.hflip(GT)
-        #
-        #     if random.random() < 0.5:
-        #         image = F.vflip(image)
-        #         GT = F.vflip(GT)
-        #
-        #     Transform = T.ColorJitter(brightness=0.2,contrast=0.2,hue=0.02)
-        #
-        #     image = Transform(image)
-        #
-        #     Transform =[]
-        #
-        #
-        # Transform.append(T.Resize((int(256*aspect_ratio)-int(256*aspect_ratio)%16,256)))
+        ResizeRange = random.randint(300,320)
+        Transform.append(T.Resize((int(ResizeRange*aspect_ratio),ResizeRange)))
+        p_transform = random.random()
+
+        if (self.mode == 'train') and p_transform <= self.augmentation_prob:
+            RotationDegree = random.randint(0,3)
+            RotationDegree = self.RotationDegree[RotationDegree]
+            if (RotationDegree == 90) or (RotationDegree == 270):
+                aspect_ratio = 1/aspect_ratio
+
+            Transform.append(T.RandomRotation((RotationDegree,RotationDegree)))
+
+            RotationRange = random.randint(-10,10)
+            Transform.append(T.RandomRotation((RotationRange,RotationRange)))
+            CropRange = random.randint(250,270)
+            Transform.append(T.CenterCrop((int(CropRange*aspect_ratio),CropRange)))
+            Transform = T.Compose(Transform)
+
+            image = Transform(image)
+            GT = Transform(GT)
+
+            ShiftRange_left = random.randint(0,20)
+            ShiftRange_upper = random.randint(0,20)
+            ShiftRange_right = image.size[0] - random.randint(0,20)
+            ShiftRange_lower = image.size[1] - random.randint(0,20)
+            image = image.crop(box=(ShiftRange_left,ShiftRange_upper,ShiftRange_right,ShiftRange_lower))
+            GT = GT.crop(box=(ShiftRange_left,ShiftRange_upper,ShiftRange_right,ShiftRange_lower))
+
+            if random.random() < 0.5:
+                image = F.hflip(image)
+                GT = F.hflip(GT)
+
+            if random.random() < 0.5:
+                image = F.vflip(image)
+                GT = F.vflip(GT)
+
+            Transform = T.ColorJitter(brightness=0.2,contrast=0.2,hue=0.02)
+
+            image = Transform(image)
+
+            Transform =[]
+
+
+        Transform.append(T.Resize((int(256*aspect_ratio)-int(256*aspect_ratio)%16,256)))
         Transform.append(T.ToTensor())
         Transform = T.Compose(Transform)
         #
