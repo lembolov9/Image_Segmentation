@@ -36,8 +36,8 @@ class ImageFolder(data.Dataset):
 
         Transform = []
 
-        ResizeRange = random.randint(300,320)
-        Transform.append(T.Resize((int(ResizeRange*aspect_ratio),ResizeRange)))
+        # ResizeRange = random.randint(300,320)
+        # Transform.append(T.Resize((int(ResizeRange*aspect_ratio),ResizeRange)))
         p_transform = random.random()
 
         # if (self.mode == 'train') and p_transform <= self.augmentation_prob:
@@ -86,7 +86,9 @@ class ImageFolder(data.Dataset):
         image = Transform(image)
         GT = Transform(GT)
 
-        Norm_ = T.Normalize((0.5), (0.5))
+        print(image.size())
+        print(GT.size())
+        Norm_ = T.Normalize((0.5,), (0.5,))
         image = Norm_(image)
 
 
