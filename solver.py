@@ -55,7 +55,7 @@ class Solver(object):
 	def build_model(self):
 		"""Build generator and discriminator."""
 		if self.model_type =='U_Net':
-			self.unet = U_Net(img_ch=3,output_ch=1)
+			self.unet = U_Net(img_ch=1,output_ch=1)
 		elif self.model_type =='R2U_Net':
 			self.unet = R2U_Net(img_ch=3,output_ch=1,t=self.t)
 		elif self.model_type =='AttU_Net':
@@ -147,8 +147,10 @@ class Solver(object):
 					SR = self.unet(images)
 					SR_probs = F.sigmoid(SR)
 					SR_flat = SR_probs.view(SR_probs.size(0),-1)
+					# print(SR_flat.size())
 
 					GT_flat = GT.view(GT.size(0),-1)
+					# print(GT_flat.size())
 					loss = self.criterion(SR_flat,GT_flat)
 					epoch_loss += loss.item()
 

@@ -4,11 +4,11 @@ import torch
 # GT : Ground Truth
 
 def get_accuracy(SR,GT,threshold=0.5):
-    SR = SR > threshold
-    GT = GT == torch.max(GT)
-    corr = torch.sum(SR==GT)
+    # SR = SR > threshold
+    # GT = GT == torch.max(GT)
+    res = (SR.detach().numpy() == GT.detach().numpy()).sum().item()
     tensor_size = SR.size(0)*SR.size(1)*SR.size(2)*SR.size(3)
-    acc = float(corr)/float(tensor_size)
+    acc = float(res)/float(tensor_size)
 
     return acc
 
