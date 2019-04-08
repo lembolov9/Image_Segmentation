@@ -80,11 +80,11 @@ class ImageFolder(data.Dataset):
         #
         #
         # Transform.append(T.Resize((int(256*aspect_ratio)-int(256*aspect_ratio)%16,256)))
-        # Transform.append(T.ToTensor())
-        # Transform = T.Compose(Transform)
-        # #
-        # image = Transform(image)
-        # GT = Transform(GT)
+        Transform.append(T.ToTensor())
+        Transform = T.Compose(Transform)
+        #
+        image = Transform(image)
+        GT = Transform(GT)
 
         Norm_ = T.Normalize((0.5), (0.5))
         image = Norm_(image)
