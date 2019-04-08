@@ -8,6 +8,8 @@ def get_accuracy(SR,GT,threshold=0.5):
     # GT = GT == torch.max(GT)
     res = (SR.detach().to('cpu').numpy() == GT.detach().to('cpu').numpy()).sum().item()
     tensor_size = SR.size(0)*SR.size(1)*SR.size(2)*SR.size(3)
+    print(res)
+    print(tensor_size)
     acc = float(res)/float(tensor_size)
 
     return acc
